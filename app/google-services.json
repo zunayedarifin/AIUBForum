@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "218124216361",
+    "firebase_url": "https://aiubforum-389a9.firebaseio.com",
+    "project_id": "aiubforum-389a9",
+    "storage_bucket": "aiubforum-389a9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:218124216361:android:76d1c462ec129e8a",
+        "android_client_info": {
+          "package_name": "com.example.zunay.aiubforum"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "218124216361-mjb8ihi29hgap17led7rf9a6gi240m5q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.zunay.aiubforum",
+            "certificate_hash": "3ad40ce409820c307340305a791a0ee308e87f7b"
+          }
+        },
+        {
+          "client_id": "218124216361-o5j2dq1bu89jjjhah2f5tngci86d92at.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6qB2L9kv6QypRBCCP-s7bjBOVgB1h_aA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "218124216361-o5j2dq1bu89jjjhah2f5tngci86d92at.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
