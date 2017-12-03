@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">AIUB Forum</string>
+    <string name="no_title">No Title</string>
+    <string name="short_description">short Description</string>
+    <string name="image">Image</string>
 </resources>
