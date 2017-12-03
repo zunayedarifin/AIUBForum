@@ -32,6 +32,7 @@ public class PostView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_view);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         postDescription = (TextView) findViewById(R.id.postDescriptionId);
         postImage = (ImageView) findViewById(R.id.postImageId);
         postDescription.setText(getIntent().getStringExtra("Description"));

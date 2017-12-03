@@ -3,4 +3,9 @@
     <string name="no_title">No Title</string>
     <string name="short_description">short Description</string>
     <string name="image">Image</string>
+    <string name="change_image">Change Image</string>
+    <string name="change_status">Change Status</string>
+    <string name="hi_i_am_using_one_chat">hi_i_am_using_one_chat</string>
+    <string name="display_name">Display Name</string>
+    <string name="save_changes">Save Changes</string>
 </resources>
