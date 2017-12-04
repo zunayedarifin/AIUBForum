@@ -2,6 +2,9 @@ package com.example.zunay.aiubforum;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +13,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText l_password;
     private ProgressDialog progressDialog;
     FirebaseAuth mAuth;
+    ImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         l_email=findViewById(R.id.editText_email_login);
         l_password=findViewById(R.id.editText_password_login);
         login_btn=findViewById(R.id.login_button);
+        imageView=findViewById(R.id.imageView);
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,6 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+        imageView.setImageBitmap(getBitmapFromResources(getResources(), R.mipmap.aiublogo));
     }
 
     private void loginUser(String email, String password) {
@@ -72,5 +79,16 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    public static Bitmap getBitmapFromResources(Resources resources, int resImage) {
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = false;
+        options.inDither = false;
+        options.inSampleSize = 1;
+        options.inScaled = false;
+        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+
+        return BitmapFactory.decodeResource(resources, resImage, options);
     }
 }

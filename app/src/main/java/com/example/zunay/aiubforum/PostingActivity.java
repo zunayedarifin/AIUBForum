@@ -27,15 +27,15 @@ import static java.text.DateFormat.getDateTimeInstance;
 
 public class PostingActivity extends AppCompatActivity {
 
-    private Button mSelectImage, mSubmit, mUploadFile, mCameraPic;
-    private EditText mTitleView, mDescription;
-    private TextView mViewPicInfo, mViewFileInfo, mPicInfoTitle, mFileInfoTitle;
+    private Button mSelectImage,mSubmit,mUploadFile,mCameraPic;
+    private EditText mTitleView,mDescription;
+    private TextView mViewPicInfo,mViewFileInfo,mPicInfoTitle,mFileInfoTitle;
     private ImageView mPreviewImage;
     private StorageReference mStorageRef;
     private static final int GALLERY_INTENT = 2;
     private static final int CAMERA_REQUEST_CODE = 1;
     private ProgressDialog mProgressDialog;
-    private Uri Iuri, Furi = null;
+    private Uri Iuri,Furi=null;
     private DatabaseReference mDatabase;
     private static final int FILE_SELECT_CODE = 0;
 
@@ -202,11 +202,12 @@ public class PostingActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == GALLERY_INTENT && resultCode == RESULT_OK) {
+        if(requestCode == GALLERY_INTENT && resultCode == RESULT_OK){
 
             Iuri = data.getData();
             mPreviewImage.setImageURI(Iuri);
             String imageName = Iuri.getLastPathSegment().toString();
+            String imageName= Iuri.getLastPathSegment();
             mPicInfoTitle.setVisibility(View.VISIBLE);
             mViewPicInfo.setVisibility(View.VISIBLE);
             mViewPicInfo.setText(imageName);
@@ -214,7 +215,7 @@ public class PostingActivity extends AppCompatActivity {
         if (requestCode == FILE_SELECT_CODE && resultCode == RESULT_OK) {
 
             Furi = data.getData();
-            String fileName = Furi.getLastPathSegment().toString();
+            String fileName = Furi.getLastPathSegment();
             mViewFileInfo.setVisibility(View.VISIBLE);
             mFileInfoTitle.setVisibility(View.VISIBLE);
             mViewFileInfo.setText(fileName);

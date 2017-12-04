@@ -4,8 +4,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.zunay.aiubforum.StartActivity">
 
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true" />
+
+        <com.viewpagerindicator.CirclePageIndicator
+            android:id="@+id/indicator"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="bottom"
+            android:padding="10dip"
+            app:centered="true"
+            app:fillColor="#df0623"
+            app:pageColor="#fff"
+            app:snap="false" />
+    </RelativeLayout>
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -26,8 +50,9 @@
         android:layout_alignLeft="@+id/register_button"
         android:layout_alignStart="@+id/register_button"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/buttondesign"
-        android:text="Login" />
+        android:textColorLink="#fff"
+        android:background="@drawable/buttondesignlogin"
+        android:text="@string/login" />
 
     <Button
         android:id="@+id/register_button"
@@ -35,8 +60,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/buttondesign"
+        android:background="@drawable/buttondesignregister"
         android:layout_marginBottom="10dp"
-        android:text="Register" />
+        android:text="@string/register" />
 
 </RelativeLayout>

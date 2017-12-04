@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         postList = new ArrayList<>();
         final PostAdapter adapter = new PostAdapter(this, postList);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Data");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Post");
 
         ValueEventListener roomsValueEventListener = new ValueEventListener() {
             @Override
@@ -59,6 +59,10 @@ public class MainActivity extends AppCompatActivity {
                         String postTime = userDataSnapshot.child("Time").getValue().toString();
                         String description = userDataSnapshot.child("Description").getValue().toString();
                         String imgSrc = userDataSnapshot.child("Image").getValue().toString();
+                        if(imgSrc.isEmpty()){
+                            imgSrc = getResources().getResourceName(R.drawable.no_image);
+                        }
+                        Post obj = new Post(title,description,imgSrc,postTime);
                         Post obj = new Post(postname,title,description,imgSrc,postTime);
                         postList.add(obj);
                         adapter.notifyDataSetChanged();
