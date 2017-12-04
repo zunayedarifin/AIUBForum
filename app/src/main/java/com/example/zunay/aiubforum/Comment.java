@@ -7,10 +7,12 @@ package com.example.zunay.aiubforum;
 public class Comment {
     private String CommentValue;
     private String imageComment;
+    private String commentTime;
 
-    Comment( String commentValue, String image) {
+    Comment( String commentValue, String image,String commentTime) {
         this.CommentValue = commentValue;
         this.imageComment = image;
+        this.commentTime = commentTime;
     }
 
 
@@ -20,6 +22,10 @@ public class Comment {
 
     String getCommentImage() {
         return imageComment;
+    }
+
+    public String getCommentTime() {
+        return commentTime;
     }
 }
 

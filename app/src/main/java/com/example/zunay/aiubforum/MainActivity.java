@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,10 +25,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
-    //a list to store all the post
     List<Post> postList;
-
-    //the recyclerview
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
     private FloatingActionButton postingButton;
@@ -38,13 +36,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
 
-        //getting the recyclerview from xml
-        recyclerView = (RecyclerView) findViewById(R.id.recycleView);
+        recyclerView = findViewById(R.id.recycleView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         postingButton=findViewById(R.id.posting_widget);
 
-        //initializing the productlist
         postList = new ArrayList<>();
         final PostAdapter adapter = new PostAdapter(this, postList);
 
@@ -56,20 +52,18 @@ public class MainActivity extends AppCompatActivity {
                 for ( DataSnapshot userDataSnapshot : dataSnapshot.getChildren() ) {
                     if (userDataSnapshot != null) {
                         String title = userDataSnapshot.child("Title").getValue().toString();
+                        String postTime = userDataSnapshot.child("Time").getValue().toString();
                         String description = userDataSnapshot.child("Description").getValue().toString();
                         String imgSrc = userDataSnapshot.child("Image").getValue().toString();
-                        Post obj = new Post(title,description,imgSrc);
+                        Post obj = new Post(title,description,imgSrc,postTime);
                         postList.add(obj);
                         adapter.notifyDataSetChanged();
                     }
                 }
             }
-
-
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                Toast.makeText(getApplicationContext(),databaseError.toString(),Toast.LENGTH_LONG).show();
             }
         };
 

@@ -55,9 +55,10 @@ public class PostView extends AppCompatActivity {
                 for ( DataSnapshot userDataSnapshot : dataSnapshot.getChildren() ) {
                     if (userDataSnapshot != null) {
                         String description = userDataSnapshot.child("Comment").getValue(String.class);
+                        String commentTime = userDataSnapshot.child("Time").getValue(String.class);
 
                         String imgSrc = "https://static.boredpanda.com/blog/wp-content/uploads/2017/01/badass-babies-thug-life-22-587ddcd0bbbbd__605.jpg";
-                        Comment obj = new Comment(description,imgSrc);
+                        Comment obj = new Comment(description,imgSrc,commentTime);
                         commentList.add(obj);
                         adapter.notifyDataSetChanged();
                     }

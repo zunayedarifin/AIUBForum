@@ -40,6 +40,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
         holder.textViewTitle.setText(post.getTitle());
         holder.textViewShortDesc.setText(post.getShortdesc());
+        holder.postTime.setText(post.getTimePost());
         Picasso.with(mCtx).load(post.getImage()).into(holder.imageView);
 
     }
@@ -53,16 +54,17 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     class PostViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        TextView textViewTitle, textViewShortDesc;
+        TextView textViewTitle, textViewShortDesc, postTime;
         ImageView imageView;
 
         PostViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
 
-            textViewTitle = (TextView) itemView.findViewById(R.id.textViewTitle);
-            textViewShortDesc = (TextView) itemView.findViewById(R.id.textViewShortDesc);
-            imageView = (ImageView) itemView.findViewById(R.id.imageView);
+            textViewTitle = itemView.findViewById(R.id.textViewTitle);
+            textViewShortDesc = itemView.findViewById(R.id.textViewShortDesc);
+            imageView = itemView.findViewById(R.id.imageView);
+            postTime = itemView.findViewById(R.id.PostTime);
         }
 
         @Override

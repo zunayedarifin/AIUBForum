@@ -34,8 +34,7 @@ public class PostViewAdapter extends RecyclerView.Adapter<PostViewAdapter.PostCo
     public void onBindViewHolder(PostCommentHolder holder, int position) {
         Comment comment = postCommentList.get(position);
         holder.textViewComment.setText(comment.CommentValue());
-
-        Log.e("rasel",comment.CommentValue());
+        holder.textViewCommentTime.setText(comment.getCommentTime());
         Picasso.with(mCtx).load(comment.getCommentImage()).into(holder.imageViewComment);
     }
 
@@ -45,14 +44,15 @@ public class PostViewAdapter extends RecyclerView.Adapter<PostViewAdapter.PostCo
     }
 
     class PostCommentHolder extends RecyclerView.ViewHolder {
-        TextView textViewComment;
+        TextView textViewComment, textViewCommentTime;
         ImageView imageViewComment;
 
         PostCommentHolder(View itemView) {
             super(itemView);
 
-            textViewComment = (TextView) itemView.findViewById(R.id.textViewComment);
-            imageViewComment = (ImageView) itemView.findViewById(R.id.imageViewComment);
+            textViewComment = itemView.findViewById(R.id.textViewComment);
+            imageViewComment = itemView.findViewById(R.id.imageViewComment);
+            textViewCommentTime = itemView.findViewById(R.id.commentTime);
         }
 
     }
