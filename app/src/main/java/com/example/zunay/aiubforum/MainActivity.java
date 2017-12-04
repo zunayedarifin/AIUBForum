@@ -2,11 +2,13 @@ package com.example.zunay.aiubforum;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     //the recyclerview
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
+    private FloatingActionButton postingButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recycleView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        postingButton=findViewById(R.id.posting_widget);
 
         //initializing the productlist
         postList = new ArrayList<>();
@@ -61,11 +65,21 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
+
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
         };
+
+        postingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(MainActivity.this,PostingActivity.class);
+                startActivity(intent);
+            }
+        });
 
         databaseReference.addListenerForSingleValueEvent(roomsValueEventListener);
         recyclerView.setAdapter(adapter);
