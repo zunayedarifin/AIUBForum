@@ -2,6 +2,7 @@ package com.example.zunay.aiubforum;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,15 +13,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-/**
- * Created by RaSeL on 02-Dec-17.
- */
-
 public class PostViewAdapter extends RecyclerView.Adapter<PostViewAdapter.PostCommentHolder> {
-    //this context we will use to inflate the layout
     private Context mCtx;
 
-    //we are storing all the products in a list
     private List<Comment> postCommentList;
 
     public PostViewAdapter(Context mCtx, List<Comment> commentList) {
@@ -37,12 +32,10 @@ public class PostViewAdapter extends RecyclerView.Adapter<PostViewAdapter.PostCo
 
     @Override
     public void onBindViewHolder(PostCommentHolder holder, int position) {
-        //getting the product of the specified position
         Comment comment = postCommentList.get(position);
-
-        //binding the data with the viewholder views
         holder.textViewComment.setText(comment.CommentValue());
-        // holder.imageView.setImageDrawable(mCtx.getResources().getDrawable(post.getImage()));
+
+        Log.e("rasel",comment.CommentValue());
         Picasso.with(mCtx).load(comment.getCommentImage()).into(holder.imageViewComment);
     }
 

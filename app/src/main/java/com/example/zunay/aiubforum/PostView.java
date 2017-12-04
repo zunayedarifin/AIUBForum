@@ -19,14 +19,13 @@ import java.util.List;
 
 public class PostView extends AppCompatActivity {
 
-    TextView postDescription;
-    ImageView postImage;
-    //a list to store all the post
+    private TextView postDescription;
+    private ImageView postImage;
+
     List<Comment> commentList;
 
-    //the recyclerview
-    RecyclerView recyclerView;
-    DatabaseReference databaseReference;
+    private RecyclerView recyclerView;
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,24 +39,22 @@ public class PostView extends AppCompatActivity {
         int position = getIntent().getIntExtra("position",0);
         position +=1;
 
-
-        //getting the recyclerview from xml
         recyclerView = (RecyclerView) findViewById(R.id.recycleViewComment);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        //initializing the productlist
         commentList = new ArrayList<>();
         final PostViewAdapter adapter = new PostViewAdapter(this, commentList);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Data").child("Post "+String.valueOf(position)).child("Reply");
+
         ValueEventListener roomsValueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for ( DataSnapshot userDataSnapshot : dataSnapshot.getChildren() ) {
                     if (userDataSnapshot != null) {
                         String description = userDataSnapshot.child("Comment").getValue(String.class);
-                        //String imgSrc = userDataSnapshot.child("Image").getValue(String.class);
+
                         String imgSrc = "https://static.boredpanda.com/blog/wp-content/uploads/2017/01/badass-babies-thug-life-22-587ddcd0bbbbd__605.jpg";
                         Comment obj = new Comment(description,imgSrc);
                         commentList.add(obj);
