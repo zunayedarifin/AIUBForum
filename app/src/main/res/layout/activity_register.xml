@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/editText_id_register"
             android:layout_centerHorizontal="true"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textPassword" />
         </android.support.design.widget.TextInputLayout>
 
@@ -95,9 +95,9 @@
             android:layout_below="@+id/textInput_layout_4"
             android:layout_marginTop="10dp"
             android:textSize="15sp"
-            android:text="Create Account"
+            android:text="@string/create_account"
             style="@style/buttonStyle"
-            android:background="@drawable/buttondesign"/>
+            android:background="@drawable/buttondesignregister"/>
 
     </RelativeLayout>
 </ScrollView>
