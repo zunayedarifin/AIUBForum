@@ -147,6 +147,7 @@ public class PostingActivity extends AppCompatActivity {
             newPost.child("Time").setValue(currentDateTimeString);
             newPost.child("Title").setValue(titleValue);
             newPost.child("Description").setValue(descriptionValue);
+            newPost.child("File").setValue("");
             mProgressDialog.dismiss();
             Toast.makeText(this, "Posted", Toast.LENGTH_SHORT).show();
             startActivity(intent);
@@ -157,6 +158,7 @@ public class PostingActivity extends AppCompatActivity {
             newPost.child("Time").setValue(currentDateTimeString);
             newPost.child("Title").setValue(titleValue);
             newPost.child("Description").setValue(descriptionValue);
+            newPost.child("Image").setValue("");
             StorageReference filepath = mStorageRef.child("User").child("PostedFile").child(Furi.getLastPathSegment());
             filepath.putFile(Furi).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -175,6 +177,8 @@ public class PostingActivity extends AppCompatActivity {
             newPost.child("Time").setValue(currentDateTimeString);
             newPost.child("Title").setValue(titleValue);
             newPost.child("Description").setValue(descriptionValue);
+            newPost.child("File").setValue("");
+            newPost.child("Image").setValue("");
             mProgressDialog.dismiss();
             Toast.makeText(this, "Posted", Toast.LENGTH_SHORT).show();
             startActivity(intent);
