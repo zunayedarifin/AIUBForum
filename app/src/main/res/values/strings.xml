@@ -3,4 +3,16 @@
     <string name="no_title">No Title</string>
     <string name="short_description">short Description</string>
     <string name="image">Image</string>
+    <string name="change_image">Change Image</string>
+    <string name="change_status">Change Status</string>
+    <string name="hi_i_am_using_one_chat">hi_i_am_using_one_chat</string>
+    <string name="display_name">Display Name</string>
+    <string name="save_changes">Save Changes</string>
+    <string name="description">Description</string>
+    <string name="file_upload">Select File</string>
+    <string name="submit">Submit</string>
+    <string name="upload_pic">Select Pic</string>
+    <string name="post_title">Title</string>
+    <string name="image_selected">Image Selected:</string>
+    <string name="file_selected">File Selected:</string>
 </resources>
