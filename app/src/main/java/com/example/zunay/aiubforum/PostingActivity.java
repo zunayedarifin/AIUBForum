@@ -202,7 +202,7 @@ public class PostingActivity extends AppCompatActivity {
 
             Iuri = data.getData();
             mPreviewImage.setImageURI(Iuri);
-            String imageName= Iuri.getLastPathSegment().toString();
+            String imageName= Iuri.getLastPathSegment();
             mPicInfoTitle.setVisibility(View.VISIBLE);
             mViewPicInfo.setVisibility(View.VISIBLE);
             mViewPicInfo.setText(imageName);
@@ -210,7 +210,7 @@ public class PostingActivity extends AppCompatActivity {
         if (requestCode == FILE_SELECT_CODE && resultCode == RESULT_OK) {
 
             Furi = data.getData();
-            String fileName = Furi.getLastPathSegment().toString();
+            String fileName = Furi.getLastPathSegment();
             mViewFileInfo.setVisibility(View.VISIBLE);
             mFileInfoTitle.setVisibility(View.VISIBLE);
             mViewFileInfo.setText(fileName);
