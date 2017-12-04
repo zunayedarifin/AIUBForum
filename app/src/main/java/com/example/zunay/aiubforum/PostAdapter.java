@@ -20,7 +20,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     private List<Post> postList;
 
-    public PostAdapter(Context mCtx, List<Post> productList) {
+    PostAdapter(Context mCtx, List<Post> productList) {
         this.mCtx = mCtx;
         this.postList = productList;
     }
@@ -36,7 +36,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     @Override
     public void onBindViewHolder(PostViewHolder holder, int position) {
 
-        Post post = postList.get(position);
+        Post post = postList.get(postList.size()-position-1);
 
         holder.textViewTitle.setText(post.getTitle());
         holder.textViewShortDesc.setText(post.getShortdesc());
@@ -69,7 +69,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
         @Override
         public void onClick(View view) {
-            int postion = getAdapterPosition();
+            int postion = postList.size()-getAdapterPosition()-1;
 
             Post post = postList.get(postion);
             Intent intent=new Intent(mCtx,PostView.class);

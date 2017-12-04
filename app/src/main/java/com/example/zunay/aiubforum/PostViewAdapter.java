@@ -32,7 +32,7 @@ public class PostViewAdapter extends RecyclerView.Adapter<PostViewAdapter.PostCo
 
     @Override
     public void onBindViewHolder(PostCommentHolder holder, int position) {
-        Comment comment = postCommentList.get(position);
+        Comment comment = postCommentList.get(postCommentList.size()-position-1);
         holder.textViewComment.setText(comment.CommentValue());
         holder.textViewCommentTime.setText(comment.getCommentTime());
         Picasso.with(mCtx).load(comment.getCommentImage()).into(holder.imageViewComment);
