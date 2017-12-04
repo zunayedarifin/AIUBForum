@@ -25,12 +25,6 @@ import java.util.Date;
 
 import static java.text.DateFormat.getDateTimeInstance;
 
-/**
- * Created by abdur on 04-Dec-17.
- */
-
-
-
 public class PostingActivity extends AppCompatActivity {
 
     private Button mSelectImage,mSubmit,mUploadFile,mCameraPic;
@@ -45,7 +39,6 @@ public class PostingActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private static final int FILE_SELECT_CODE = 0;
 
-    private String downloadImageurl,downloadFileurl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,11 +52,10 @@ public class PostingActivity extends AppCompatActivity {
         mViewPicInfo = findViewById(R.id.pic_info);
         mViewFileInfo = findViewById(R.id.file_info);
         mProgressDialog = new ProgressDialog(this);
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Post");
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Data");
         mUploadFile = findViewById(R.id.fileUploadButton);
         mPicInfoTitle = findViewById(R.id.pic_view_info);
         mFileInfoTitle = findViewById(R.id.file_view_info);
-        // mCameraPic = findViewById(R.id.button2);
 
         mSelectImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,6 +104,8 @@ public class PostingActivity extends AppCompatActivity {
             Imagefilepath.putFile(Iuri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                    Toast.makeText(getApplicationContext(), "Inside Image file path", Toast.LENGTH_SHORT).show();
                     Uri downloadUrl = taskSnapshot.getDownloadUrl();
                     newPost.child("Image").setValue(downloadUrl.toString());
                 }
@@ -121,6 +115,7 @@ public class PostingActivity extends AppCompatActivity {
             filepath.putFile(Furi).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Toast.makeText(getApplicationContext(), "Inside file path", Toast.LENGTH_SHORT).show();
                     Uri downloadUrl= taskSnapshot.getDownloadUrl();
                     newPost.child("File").setValue(downloadUrl.toString());
 
