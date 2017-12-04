@@ -16,4 +16,5 @@
     <string name="image_selected">Image Selected:</string>
     <string name="file_selected">File Selected:</string>
     <string name="time">Time</string>
+    <string name="reply">Reply</string>
 </resources>
