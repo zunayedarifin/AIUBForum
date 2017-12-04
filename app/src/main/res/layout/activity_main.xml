@@ -22,8 +22,7 @@
         android:layout_alignRight="@id/recycleView"
         android:clickable="true"
         app:backgroundTint="@color/cardview_dark_background"
-        app:fabSize="normal"
-        android:src="@mipmap/ic_postbtnwidget"/>
+        app:fabSize="normal"/>
 
 
 </RelativeLayout>

@@ -53,9 +53,8 @@ public class ReplyActivity extends AppCompatActivity {
         mViewPicInfo = findViewById(R.id.pic_info);
         mViewFileInfo = findViewById(R.id.file_info);
         mProgressDialog = new ProgressDialog(this);
-        int position = getIntent().getIntExtra("position",0);
-        position +=1;
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Reply").child("Post "+String.valueOf(position));
+        String postName = getIntent().getStringExtra("postName");
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Data").child(postName);
         mUploadFile = findViewById(R.id.fileUploadButton);
         mPicInfoTitle = findViewById(R.id.pic_view_info);
         mFileInfoTitle = findViewById(R.id.file_view_info);
@@ -140,6 +139,7 @@ public class ReplyActivity extends AppCompatActivity {
             String currentDateTimeString = getDateTimeInstance().format(new Date());
             newPost.child("Time").setValue(currentDateTimeString);
             newPost.child("Description").setValue(descriptionValue);
+            newPost.child("File").setValue("");
             mProgressDialog.dismiss();
             Toast.makeText(this, "Posted", Toast.LENGTH_SHORT).show();
             startActivity(intent);
@@ -149,6 +149,7 @@ public class ReplyActivity extends AppCompatActivity {
             String currentDateTimeString = getDateTimeInstance().format(new Date());
             newPost.child("Time").setValue(currentDateTimeString);
             newPost.child("Description").setValue(descriptionValue);
+            newPost.child("Image").setValue("");
             StorageReference filepath = mStorageRef.child("User").child("PostedFile").child(Furi.getLastPathSegment());
             filepath.putFile(Furi).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -166,6 +167,8 @@ public class ReplyActivity extends AppCompatActivity {
             String currentDateTimeString = getDateTimeInstance().format(new Date());
             newPost.child("Time").setValue(currentDateTimeString);
             newPost.child("Description").setValue(descriptionValue);
+            newPost.child("Image").setValue("");
+            newPost.child("File").setValue("");
             mProgressDialog.dismiss();
             Toast.makeText(this, "Posted", Toast.LENGTH_SHORT).show();
             startActivity(intent);

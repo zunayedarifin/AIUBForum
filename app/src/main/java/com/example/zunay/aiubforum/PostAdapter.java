@@ -72,10 +72,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             int postion = postList.size()-getAdapterPosition()-1;
 
             Post post = postList.get(postion);
+
             Intent intent=new Intent(mCtx,PostView.class);
             intent.putExtra("Description",post.getShortdesc());
             intent.putExtra("ImageSrc",post.getImage());
-            intent.putExtra("position",postion);
+            intent.putExtra("postName",post.getPostName());
             mCtx.startActivity(intent);
         }
     }

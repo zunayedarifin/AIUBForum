@@ -5,12 +5,14 @@ package com.example.zunay.aiubforum;
  */
 
 public class Post {
+    private String postName;
     private String title;
     private String shortdesc;
     private String image;
     private String timePost;
 
-    Post(String title, String shortdesc, String image, String timeComment) {
+    Post(String postName,String title, String shortdesc, String image, String timeComment) {
+        this.postName = postName;
         this.title = title;
         this.shortdesc = shortdesc;
         this.image = image;
@@ -31,5 +33,9 @@ public class Post {
 
     String getTimePost() {
         return timePost;
+    }
+
+    public String getPostName() {
+        return postName;
     }
 }

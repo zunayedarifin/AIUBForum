@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -51,11 +52,14 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for ( DataSnapshot userDataSnapshot : dataSnapshot.getChildren() ) {
                     if (userDataSnapshot != null) {
+                        String postname = userDataSnapshot.getKey();
+                        //Toast.makeText(getApplicationContext(),postname,Toast.LENGTH_LONG).show();
+
                         String title = userDataSnapshot.child("Title").getValue().toString();
                         String postTime = userDataSnapshot.child("Time").getValue().toString();
                         String description = userDataSnapshot.child("Description").getValue().toString();
                         String imgSrc = userDataSnapshot.child("Image").getValue().toString();
-                        Post obj = new Post(title,description,imgSrc,postTime);
+                        Post obj = new Post(postname,title,description,imgSrc,postTime);
                         postList.add(obj);
                         adapter.notifyDataSetChanged();
                     }
