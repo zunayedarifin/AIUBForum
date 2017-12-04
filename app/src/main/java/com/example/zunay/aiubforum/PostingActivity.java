@@ -1,5 +1,4 @@
 package com.example.zunay.aiubforum;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -94,7 +93,6 @@ public class PostingActivity extends AppCompatActivity {
     private void starPosting() {
         mProgressDialog.setMessage("Posting...");
         mProgressDialog.show();
-        Intent intent= new Intent(PostingActivity.this,MainActivity.class);
 
         final DatabaseReference newPost = mDatabase.push();
         String titleValue = mTitleView.getText().toString().trim();
@@ -121,7 +119,6 @@ public class PostingActivity extends AppCompatActivity {
             newPost.child("Time").setValue(currentDateTimeString);
             newPost.child("Title").setValue(titleValue);
             newPost.child("Description").setValue(descriptionValue);
-            startActivity(intent);
             mProgressDialog.dismiss();
             Toast.makeText(this, "Posted", Toast.LENGTH_SHORT).show();
         }
@@ -139,7 +136,6 @@ public class PostingActivity extends AppCompatActivity {
             newPost.child("Title").setValue(titleValue);
             newPost.child("Description").setValue(descriptionValue);
             newPost.child("File").setValue("");
-            startActivity(intent);
             mProgressDialog.dismiss();
             Toast.makeText(this, "Posted", Toast.LENGTH_SHORT).show();
         }
@@ -158,7 +154,6 @@ public class PostingActivity extends AppCompatActivity {
                 }
             });
             mProgressDialog.dismiss();
-            startActivity(intent);
             Toast.makeText(this, "Posted", Toast.LENGTH_SHORT).show();
         }
 
@@ -170,7 +165,6 @@ public class PostingActivity extends AppCompatActivity {
             newPost.child("File").setValue("");
             newPost.child("Image").setValue("");
             mProgressDialog.dismiss();
-            startActivity(intent);
             Toast.makeText(this, "Posted", Toast.LENGTH_SHORT).show();
         }
         else{
