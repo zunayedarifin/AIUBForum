@@ -17,4 +17,8 @@
     <string name="file_selected">File Selected:</string>
     <string name="time">Time</string>
     <string name="reply">Reply</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="create_account">Create Account</string>
+    <string name="password">Password</string>
 </resources>

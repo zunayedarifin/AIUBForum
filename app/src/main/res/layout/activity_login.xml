@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#BBDEFB"
+    android:background="#E0E0E0"
     >
     <LinearLayout
         xmlns:tools="http://schemas.android.com/tools"
@@ -17,8 +17,8 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginTop="20dp"
-            android:layout_gravity="center_horizontal"
-            android:src="@mipmap/ic_launcher_aiub" />
+            android:scaleType="centerCrop"
+            android:layout_gravity="center_horizontal" />
         <android.support.design.widget.TextInputLayout
             android:id="@+id/textInput_layout_1"
             android:layout_width="match_parent"
@@ -70,6 +70,6 @@
             android:layout_gravity="center_horizontal"
             android:text="Login"
             style="@style/buttonStyle"
-            android:background="@drawable/buttondesign"/>
+            android:background="@drawable/buttondesignlogin"/>
     </LinearLayout>
 </ScrollView>

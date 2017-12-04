@@ -7,10 +7,6 @@
     android:background="@android:color/background_light"
     tools:context="com.example.zunay.aiubforum.SettingsActivity">
 
-    <include
-        android:id="@+id/account_settings_app_bar"
-        layout="@layout/app_bar_layout" />
-
     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/profile_image"
         android:layout_width="200dp"

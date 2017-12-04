@@ -28,9 +28,6 @@ public class StatusActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status);
-        toolbar=findViewById(R.id.status_bar_layout);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Update Status");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         editText=findViewById(R.id.editText_status);
 

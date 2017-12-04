@@ -103,7 +103,7 @@ public class SettingsActivity extends AppCompatActivity {
                 galaryIntent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(Intent.createChooser(galaryIntent,"Select Image"),GALARY_PIC);
 
-                //CropImage.activity().setGuidelines(CropImageView.Guidelines.ON).start(SettingsActivity.this);
+                //CropImage.activity().setGuidelines(CropImageView.Guidelines.ON).start(ActivitySettings.this);
 
             }
         });
