@@ -1,9 +1,12 @@
 package com.example.zunay.aiubforum;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,9 +24,11 @@ public class PostView extends AppCompatActivity {
 
     private TextView postDescription;
     private ImageView postImage;
-
+    private int position;
     List<Comment> commentList;
 
+    //the recyclerview
+    private Button mCommentBtn;
     private RecyclerView recyclerView;
     private DatabaseReference databaseReference;
 
@@ -37,8 +42,17 @@ public class PostView extends AppCompatActivity {
         postDescription.setText(getIntent().getStringExtra("Description"));
         Picasso.with(this).load(getIntent().getStringExtra("ImageSrc")).into(postImage);
 
-        int position = getIntent().getIntExtra("position",0);
+        position = getIntent().getIntExtra("position",0);
         position +=1;
+        mCommentBtn = findViewById(R.id.btnComment);
+        mCommentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PostView.this,ReplyActivity.class);
+                intent.putExtra("position", position);
+                startActivity(intent);
+            }
+        });
 
         recyclerView = (RecyclerView) findViewById(R.id.recycleViewComment);
         recyclerView.setHasFixedSize(true);
@@ -71,5 +85,6 @@ public class PostView extends AppCompatActivity {
         };
         databaseReference.addListenerForSingleValueEvent(roomsValueEventListener);
         recyclerView.setAdapter(adapter);
+
     }
 }

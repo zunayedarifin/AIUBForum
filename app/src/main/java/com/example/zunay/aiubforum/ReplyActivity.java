@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,12 +28,10 @@ import static java.text.DateFormat.getDateTimeInstance;
  * Created by abdur on 04-Dec-17.
  */
 
-
-
-public class PostingActivity extends AppCompatActivity {
+public class ReplyActivity extends AppCompatActivity {
 
     private Button mSelectImage,mSubmit,mUploadFile,mCameraPic;
-    private EditText mTitleView,mDescription;
+    private EditText mDescription;
     private TextView mViewPicInfo,mViewFileInfo,mPicInfoTitle,mFileInfoTitle;
     private ImageView mPreviewImage;
     private StorageReference mStorageRef;
@@ -44,22 +41,21 @@ public class PostingActivity extends AppCompatActivity {
     private Uri Iuri,Furi=null;
     private DatabaseReference mDatabase;
     private static final int FILE_SELECT_CODE = 0;
-
-    private String downloadImageurl,downloadFileurl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_posting);
+        setContentView(R.layout.activity_reply);
         mStorageRef = FirebaseStorage.getInstance().getReference();
         mSelectImage = findViewById(R.id.selectImage);
         mPreviewImage = findViewById(R.id.previewImage);
         mSubmit = findViewById(R.id.submit);
-        mTitleView = findViewById(R.id.titleView);
         mDescription = findViewById(R.id.descriptionText);
         mViewPicInfo = findViewById(R.id.pic_info);
         mViewFileInfo = findViewById(R.id.file_info);
         mProgressDialog = new ProgressDialog(this);
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Post");
+        int position = getIntent().getIntExtra("position",0);
+        position +=1;
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Reply").child("Post "+String.valueOf(position));
         mUploadFile = findViewById(R.id.fileUploadButton);
         mPicInfoTitle = findViewById(R.id.pic_view_info);
         mFileInfoTitle = findViewById(R.id.file_view_info);
@@ -104,10 +100,9 @@ public class PostingActivity extends AppCompatActivity {
         mProgressDialog.show();
 
         final DatabaseReference newPost = mDatabase.push();
-        Intent intent = new Intent(PostingActivity.this,MainActivity.class);
-        String titleValue = mTitleView.getText().toString().trim();
+        Intent intent = new Intent(ReplyActivity.this,MainActivity.class);
         String descriptionValue = mDescription.getText().toString().trim();
-        if(!TextUtils.isEmpty(titleValue)&& !TextUtils.isEmpty(descriptionValue) && Iuri != null && Furi !=null){
+        if(!TextUtils.isEmpty(descriptionValue) && Iuri != null && Furi !=null){
             StorageReference Imagefilepath = mStorageRef.child("User").child("PostedImage").child(Iuri.getLastPathSegment());
             Imagefilepath.putFile(Iuri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -128,13 +123,12 @@ public class PostingActivity extends AppCompatActivity {
             });
             String currentDateTimeString = getDateTimeInstance().format(new Date());
             newPost.child("Time").setValue(currentDateTimeString);
-            newPost.child("Title").setValue(titleValue);
             newPost.child("Description").setValue(descriptionValue);
             mProgressDialog.dismiss();
             Toast.makeText(this, "Posted", Toast.LENGTH_SHORT).show();
             startActivity(intent);
         }
-        else if(!TextUtils.isEmpty(titleValue)&& !TextUtils.isEmpty(descriptionValue) && Iuri != null && Furi ==null){
+        else if(!TextUtils.isEmpty(descriptionValue) && Iuri != null && Furi ==null){
             StorageReference Imagefilepath = mStorageRef.child("User").child("PostedImage").child(Iuri.getLastPathSegment());
             Imagefilepath.putFile(Iuri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -145,17 +139,15 @@ public class PostingActivity extends AppCompatActivity {
             });
             String currentDateTimeString = getDateTimeInstance().format(new Date());
             newPost.child("Time").setValue(currentDateTimeString);
-            newPost.child("Title").setValue(titleValue);
             newPost.child("Description").setValue(descriptionValue);
             mProgressDialog.dismiss();
             Toast.makeText(this, "Posted", Toast.LENGTH_SHORT).show();
             startActivity(intent);
         }
-        else if(!TextUtils.isEmpty(titleValue)&& !TextUtils.isEmpty(descriptionValue) && Iuri == null && Furi !=null){
+        else if(!TextUtils.isEmpty(descriptionValue) && Iuri == null && Furi !=null){
 
             String currentDateTimeString = getDateTimeInstance().format(new Date());
             newPost.child("Time").setValue(currentDateTimeString);
-            newPost.child("Title").setValue(titleValue);
             newPost.child("Description").setValue(descriptionValue);
             StorageReference filepath = mStorageRef.child("User").child("PostedFile").child(Furi.getLastPathSegment());
             filepath.putFile(Furi).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -170,18 +162,13 @@ public class PostingActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        else if(!TextUtils.isEmpty(titleValue)&& !TextUtils.isEmpty(descriptionValue)){
+        else if(!TextUtils.isEmpty(descriptionValue)){
             String currentDateTimeString = getDateTimeInstance().format(new Date());
             newPost.child("Time").setValue(currentDateTimeString);
-            newPost.child("Title").setValue(titleValue);
             newPost.child("Description").setValue(descriptionValue);
             mProgressDialog.dismiss();
             Toast.makeText(this, "Posted", Toast.LENGTH_SHORT).show();
             startActivity(intent);
-        }
-        else{
-            mProgressDialog.dismiss();
-            Toast.makeText(this, "Title & Description Can't Be Empty", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -194,7 +181,7 @@ public class PostingActivity extends AppCompatActivity {
             startActivityForResult(Intent.createChooser(intentFileSelect, "Select a File to Upload"),FILE_SELECT_CODE);
         } catch (android.content.ActivityNotFoundException ex) {
             // Potentially direct the user to the Market with a Dialog
-            Toast.makeText(PostingActivity.this, "Please install a File Manager.",
+            Toast.makeText(ReplyActivity.this, "Please install a File Manager.",
                     Toast.LENGTH_SHORT).show();
         }
 
