@@ -62,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
                         if(imgSrc.isEmpty()){
                             imgSrc = getResources().getResourceName(R.drawable.no_image);
                         }
-                        Post obj = new Post(title,description,imgSrc,postTime);
                         Post obj = new Post(postname,title,description,imgSrc,postTime);
                         postList.add(obj);
                         adapter.notifyDataSetChanged();
