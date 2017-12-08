@@ -3,14 +3,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#BBDEFB"
     android:fillViewport="true">
     <RelativeLayout
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.example.zunay.onechat.RegisterActivity">
-
+        <ImageView
+            android:id="@+id/imageView_account_settings"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/slideshow4"
+            android:scaleType="fitXY"
+            android:alpha="0.1"/>
         <ImageView
             android:id="@+id/imageView_register"
             android:layout_width="150dp"
@@ -26,12 +31,12 @@
             android:layout_below="@id/imageView_register"
             android:layout_marginTop="10dp"
             android:padding="10dp">
-        <EditText
-            android:id="@+id/editText_name_register"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:hint="Your Name" />
+            <EditText
+                android:id="@+id/editText_name_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:hint="Your Name" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -42,14 +47,14 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:padding="10dp">
-        <EditText
-            android:id="@+id/editText_email_register"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/editText_name_register"
-            android:layout_centerHorizontal="true"
-            android:hint="Email Address"
-            android:inputType="textEmailAddress" />
+            <EditText
+                android:id="@+id/editText_email_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editText_name_register"
+                android:layout_centerHorizontal="true"
+                android:hint="Email Address"
+                android:inputType="textEmailAddress" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -60,13 +65,13 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:padding="10dp">
-        <EditText
-            android:id="@+id/editText_id_register"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/editText_email_register"
-            android:layout_centerHorizontal="true"
-            android:hint="ID NO" />
+            <EditText
+                android:id="@+id/editText_id_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editText_email_register"
+                android:layout_centerHorizontal="true"
+                android:hint="ID NO" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -77,14 +82,14 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:padding="10dp">
-        <EditText
-            android:id="@+id/editText_password_register"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/editText_id_register"
-            android:layout_centerHorizontal="true"
-            android:hint="@string/password"
-            android:inputType="textPassword" />
+            <EditText
+                android:id="@+id/editText_password_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editText_id_register"
+                android:layout_centerHorizontal="true"
+                android:hint="@string/password"
+                android:inputType="textPassword" />
         </android.support.design.widget.TextInputLayout>
 
         <Button

@@ -5,71 +5,88 @@
     android:layout_height="match_parent"
     android:background="#E0E0E0"
     >
-    <LinearLayout
+    <RelativeLayout
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="match_parent"
         tools:context="com.example.zunay.aiubforum.LoginActivity">
+        <ImageView
+            android:id="@+id/imageView_account_settings"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/slideshow4"
+            android:scaleType="fitXY"
+            android:alpha="0.1"/>
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_marginTop="20dp"
-            android:scaleType="centerCrop"
-            android:layout_gravity="center_horizontal" />
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:scaleType="centerCrop" />
+
         <android.support.design.widget.TextInputLayout
             android:id="@+id/textInput_layout_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_below="@id/imageView"
             android:layout_marginTop="25dp"
             android:layout_marginBottom="8dp"
-            android:padding="25dp">
+            android:padding="25dp"/>
 
         <EditText
             android:id="@+id/editText_email_login"
             android:layout_width="320dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imageView"
+            android:layout_below="@+id/textInput_layout_1"
             android:layout_marginTop="15dp"
             android:layout_gravity="center_horizontal"
             android:hint="Email Address"
             android:inputType="textEmailAddress"
             android:layout_centerInParent="true"/>
-        </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/textInput_layout_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_below="@id/editText_email_login"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:padding="25dp">
 
-        <EditText
-            android:id="@+id/editText_password_login"
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_below="@id/editText_email_login"
-            android:layout_marginTop="12dp"
-            android:hint="Password"
-            android:inputType="textPassword" />
+            <EditText
+                android:id="@+id/editText_password_login"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textInput_layout_2"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="12dp"
+                android:hint="Password"
+                android:inputType="textPassword" />
         </android.support.design.widget.TextInputLayout>
 
         <Button
             android:id="@+id/login_button"
+            style="@style/buttonStyle"
             android:layout_width="320dp"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:padding="25dp"
-            android:layout_marginTop="10dp"
+            android:layout_alignLeft="@+id/editText_email_login"
+            android:layout_alignStart="@+id/editText_email_login"
+            android:layout_below="@+id/textInput_layout_2"
             android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:background="@drawable/buttondesignlogin"
+            android:padding="25dp"
             android:text="Login"
-            style="@style/buttonStyle"
-            android:background="@drawable/buttondesignlogin"/>
-    </LinearLayout>
+            android:textSize="15sp" />
+
+
+
+    </RelativeLayout>
 </ScrollView>
