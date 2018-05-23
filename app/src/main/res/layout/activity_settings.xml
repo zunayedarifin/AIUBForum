@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/background_light"
     tools:context="com.example.zunay.aiubforum.SettingsActivity">
-<RelativeLayout
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="@android:color/background_light"
-tools:context="com.example.zunay.aiubforum.SettingsActivity">
 
+    <ImageView
+        android:id="@+id/imageView_account_settings"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/login_page_background"
+        android:scaleType="centerCrop"
+        android:alpha="0.85"/>
     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/profile_image"
         android:layout_width="200dp"
@@ -30,6 +31,7 @@ tools:context="com.example.zunay.aiubforum.SettingsActivity">
         android:layout_below="@+id/profile_image"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="61dp"
+        android:textColor="#fff"
         android:text="@string/display_name"
         android:textSize="24dp" />
 
@@ -41,6 +43,7 @@ tools:context="com.example.zunay.aiubforum.SettingsActivity">
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginTop="25dp"
+        android:textColor="#fff"
         android:text="@string/hi_i_am_using_one_chat"
         android:textSize="15dp" />
 
@@ -50,6 +53,7 @@ tools:context="com.example.zunay.aiubforum.SettingsActivity">
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView_display_message"
         android:layout_centerHorizontal="true"
+        android:background="@drawable/buttondesignlogin"
         android:layout_marginTop="40dp"
         android:padding="8dp"
         android:text="@string/change_image" />
@@ -61,10 +65,8 @@ tools:context="com.example.zunay.aiubforum.SettingsActivity">
         android:layout_below="@+id/button_change_image"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
-        android:background="@color/colorAccent"
+        android:background="@drawable/buttondesignlogin"
         android:padding="8dp"
         android:text="@string/change_status" />
 
 </RelativeLayout>
-
-</ScrollView>

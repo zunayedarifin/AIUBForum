@@ -22,7 +22,8 @@
         android:layout_alignBottom="@id/recycleView"
         android:layout_alignRight="@id/recycleView"
         android:clickable="true"
-        app:backgroundTint="@color/cardview_dark_background"
+        app:backgroundTint="#4e5be7"
+        android:src="@drawable/iconsplus"
         app:fabSize="normal"/>
 
 
