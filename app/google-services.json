@@ -15,12 +15,24 @@
       },
       "oauth_client": [
         {
+          "client_id": "218124216361-bun31c8mligeva2ecikirgji1l3f9nld.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.zunay.aiubforum",
+            "certificate_hash": "3106f32c4602db4f57ecc517bd4dfaa78969c838"
+          }
+        },
+        {
           "client_id": "218124216361-mjb8ihi29hgap17led7rf9a6gi240m5q.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.zunay.aiubforum",
             "certificate_hash": "3ad40ce409820c307340305a791a0ee308e87f7b"
           }
+        },
+        {
+          "client_id": "218124216361-o5j2dq1bu89jjjhah2f5tngci86d92at.apps.googleusercontent.com",
+          "client_type": 3
         },
         {
           "client_id": "218124216361-o5j2dq1bu89jjjhah2f5tngci86d92at.apps.googleusercontent.com",

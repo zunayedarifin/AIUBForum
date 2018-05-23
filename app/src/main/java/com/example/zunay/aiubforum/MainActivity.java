@@ -50,11 +50,11 @@ public class MainActivity extends AppCompatActivity {
         ValueEventListener roomsValueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
                 for ( DataSnapshot userDataSnapshot : dataSnapshot.getChildren() ) {
                     if (userDataSnapshot != null) {
                         String postname = userDataSnapshot.getKey();
                         //Toast.makeText(getApplicationContext(),postname,Toast.LENGTH_LONG).show();
-
                         String title = userDataSnapshot.child("Title").getValue().toString();
                         String postTime = userDataSnapshot.child("Time").getValue().toString();
                         String description = userDataSnapshot.child("Description").getValue().toString();

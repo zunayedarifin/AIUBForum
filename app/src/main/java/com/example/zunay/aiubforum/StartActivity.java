@@ -122,7 +122,7 @@ public class StartActivity extends AppCompatActivity {
         imageModelArrayList = new ArrayList<>();
         imageModelArrayList = populateList();
 
-        init();
+        //init();
     }
 
 }
